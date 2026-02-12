@@ -1,0 +1,47 @@
+{
+  "layout": {
+    "padding": 72
+  },
+  "typography": {
+    "fontFamily": "Arial",
+    "titleMaxSize": 132,
+    "titleMinSize": 64,
+    "lineHeightRatio": 1.06,
+    "maxLines": 3,
+    "visibleWordsMax": 6
+  },
+  "colors": {
+    "backgroundGradient": ["#111827", "#2563eb"],
+    "title": "#ffffff",
+    "titleOutline": "rgba(0,0,0,0.95)"
+  },
+  "effects": {
+    "outlineWidth": 10,
+    "shadow": true,
+    "shadowColor": "rgba(0,0,0,0.45)",
+    "shadowBlur": 22,
+    "shadowOffsetX": 0,
+    "shadowOffsetY": 8,
+    "textureOpacity": 0.09,
+    "textureSteps": 280
+  },
+  "badge": {
+    "position": "top-right",
+    "fill": "#ef4444",
+    "textColor": "#ffffff",
+    "fontSize": 42,
+    "paddingX": 22,
+    "paddingY": 12,
+    "margin": 72,
+    "radius": 999
+  },
+  "footer": {
+    "fontFamily": "Arial",
+    "fontSize": 30,
+    "textColor": "rgba(255,255,255,0.95)",
+    "marginBottom": 30
+  },
+  "defaults": {
+    "footer": "Your Channel"
+  }
+}
