@@ -1,0 +1,25 @@
+{
+  "name": "thumbnail-generator",
+  "version": "1.0.0",
+  "description": "Local YouTube thumbnail generator from CSV/JSON inputs",
+  "main": "src/generate.js",
+  "scripts": {
+    "build": "node -e \"console.log('No build step required for plain Node.js project')\"",
+    "generate": "node src/generate.js",
+    "smoke": "node src/generate.js --in inputs/sample.json --template default --out out --limit 3",
+    "web": "node src/web-server.js --port 3000"
+  },
+  "keywords": [
+    "youtube",
+    "thumbnails",
+    "canvas",
+    "generator"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "canvas": "^2.11.2"
+  }
+}

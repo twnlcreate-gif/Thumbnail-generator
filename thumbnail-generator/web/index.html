@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thumbnail Generator Web</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0f172a;
+        --panel: #111827;
+        --muted: #94a3b8;
+        --accent: #22d3ee;
+        --text: #f8fafc;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+        background: radial-gradient(circle at 10% 10%, #1e293b, var(--bg));
+        color: var(--text);
+      }
+      .wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 380px 1fr;
+      }
+      .panel {
+        background: rgba(17, 24, 39, 0.95);
+        border: 1px solid #1f2937;
+        border-radius: 14px;
+        padding: 18px;
+      }
+      h1 { margin: 0 0 8px; font-size: 1.35rem; }
+      p { margin: 0 0 14px; color: var(--muted); }
+      label { display: block; margin: 12px 0 6px; font-weight: 600; font-size: .92rem; }
+      input, textarea, select, button {
+        width: 100%; box-sizing: border-box; border-radius: 10px; border: 1px solid #334155;
+        background: #0b1220; color: var(--text); padding: 10px 12px;
+      }
+      textarea { min-height: 80px; resize: vertical; }
+      .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      button { background: linear-gradient(90deg, #06b6d4, #3b82f6); border: none; font-weight: 700; cursor: pointer; }
+      button:hover { filter: brightness(1.08); }
+      canvas { width: 100%; aspect-ratio: 16/9; border-radius: 12px; border: 1px solid #334155; background: #0b1220; }
+      .hint { font-size: .85rem; color: var(--muted); margin-top: 8px; }
+      .video-preview { width: 100%; border-radius: 10px; margin-top: 8px; display: none; }
+      @media (max-width: 980px) { .wrap { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <section class="panel">
+        <h1>Simple Thumbnail Website</h1>
+        <p>Upload a script or a finished video, then generate a 1280×720 thumbnail.</p>
+
+        <label for="scriptFile">Script file (.txt/.md)</label>
+        <input id="scriptFile" type="file" accept=".txt,.md,.csv,.json" />
+
+        <label for="videoFile">Finished video file</label>
+        <input id="videoFile" type="file" accept="video/*" />
+        <video id="video" class="video-preview" controls></video>
+
+        <label for="title">Title</label>
+        <textarea id="title" placeholder="Auto-filled from script if available"></textarea>
+
+        <label for="badge">Badge (optional)</label>
+        <div class="row">
+          <input id="badge" placeholder="FIX / STOP / GOODBYE" />
+          <select id="badgePos">
+            <option value="top-right">Top right</option>
+            <option value="top-left">Top left</option>
+            <option value="bottom-right">Bottom right</option>
+            <option value="bottom-left">Bottom left</option>
+          </select>
+        </div>
+
+        <label for="footer">Footer / Channel</label>
+        <input id="footer" value="My Channel" />
+
+        <label for="timeRange">Video frame time (seconds)</label>
+        <input id="timeRange" type="range" min="0" max="0" value="0" step="0.1" />
+        <div class="hint" id="timeLabel">No video loaded.</div>
+
+        <div class="row" style="margin-top:14px;">
+          <button id="generateBtn" type="button">Generate Thumbnail</button>
+          <button id="downloadBtn" type="button">Download PNG</button>
+        </div>
+
+        <div class="hint">Tip: if a video is loaded, the current frame is used as background with a dark overlay.</div>
+      </section>
+
+      <section class="panel">
+        <canvas id="thumb" width="1280" height="720"></canvas>
+        <div class="hint">Preview canvas (exact export size: 1280×720).</div>
+      </section>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
